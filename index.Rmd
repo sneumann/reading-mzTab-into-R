@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r main-table}
 dt_source <- cbind(file = basename(all_files), 
-                   jmztabm = factor(sapply(jmztabm_res, function(i) ifelse(is.null(attr(i, "status")), "success", "error")), levels = c("error", "silent failure", "success")),
+                   jmztabm = factor(sapply(jmztabm_res, function(i) ifelse(is.null(attr(i, "status")), "success", "crash")), levels = c("crash", "silent failure", "success")),
                    import_df)
 
 DT::datatable(dt_source,
@@ -33,7 +33,7 @@ DT::datatable(dt_source,
               extensions = "Buttons"
 ) |> 
   DT::formatStyle(1L:ncol(import_df) + 2, # +2 because two first columns are file name and validator
-                  backgroundColor = DT::styleEqual(levels = c("error", "silent failure", "success"), 
+                  backgroundColor = DT::styleEqual(levels = c("crash", "silent failure", "success"), 
                                                    values = c("#fc8d59", "grey83", "#91cf60"))) 
 ```
 

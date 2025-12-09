@@ -12,6 +12,6 @@ test_rmzTabM <- function(all_files) {
   
   resulting_class <- sapply(all_reads, class)
   
-  list(assessment = ifelse(resulting_class == "try-error", "error", "success"),
-                           reads = all_reads)
+  list(assessment = ifelse(resulting_class == "try-error", "crash", "success"),
+       reads = all_reads)
 }
